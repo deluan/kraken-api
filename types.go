@@ -146,6 +146,19 @@ type TradeBalance struct {
 	Ml float64 `json:"ml,string"` // margin level = (equity / initial margin) * 100
 }
 
+type WithdrawStatus struct {
+	Method string  `json:"method"`        // name of the withdrawal method used
+	Aclass string  `json:"aclass"`        // asset class
+	Asset  string  `json:"asset"`         // asset X-ISO4217-A3 code
+	Refid  string  `json:"refid"`         // reference id
+	TxID   string  `json:"txid"`          // method transaction id
+	Info   string  `json:"info"`          // method transaction information
+	Amount float64 `json:"amount,string"` // amount withdrawn
+	Fee    float64 `json:"fee,string"`    // fees paid
+	Time   float64 `json:"time"`          // unix timestamp when request was made
+	Status string  `json:"status"`        // status of withdrawal
+}
+
 type Order struct {
 	RefId      string     `json:"refid"`             // Referral order transaction id that created this order
 	Userref    int64      `json:"userref"`           // user reference id

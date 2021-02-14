@@ -205,7 +205,7 @@ func TestApiQueryTrades(t *testing.T) {
 	}
 
 	for k, v := range trades {
-		log.Printf("%s: %s\n", k, v)
+		log.Printf("%s: %v\n", k, v)
 	}
 }
 
@@ -289,7 +289,7 @@ func TestApiAddOrder(t *testing.T) {
 }
 
 func DumpOrder(order_id string, order *Order) {
-	log.Printf("%s: refid%s userref%s status:%s descr:%s opentm:%f closetm:%f\n",
+	log.Printf("%s: refid%s userref%d status:%s descr:%s opentm:%f closetm:%f\n",
 		order_id,
 		order.RefId,
 		order.Userref,
@@ -329,7 +329,7 @@ func TestApiClosedOrders(t *testing.T) {
 func TestApiQueryOrders(t *testing.T) {
 	log.Println("TestApiQueryOrders...")
 
-	txids := "OIAELX-R55O5-7MPE7P,OMINPY-EEQ5G-CTM64S"
+	txids := "OBS47P-P5LV7-WAE3OV,OMDL5O-AEILS-MYEXLF"
 
 	orders, err := api.ApiQueryOrders(false, "", txids)
 	if err != nil {

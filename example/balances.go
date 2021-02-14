@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/mycroft/kraken-api"
+	"github.com/deluan/kraken-api"
 )
 
 func main() {

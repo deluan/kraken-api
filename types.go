@@ -141,14 +141,14 @@ type TradeBalance struct {
 	N  float64 `json:"n,string"`  // unrealized net profit/loss of open positions
 	C  float64 `json:"c,string"`  // cost basis of open positions
 	V  float64 `json:"v,string"`  // current floating valuation of open positions
-	E  float64 `json:"v,string"`  // equity = trade balance + unrealized net profit/loss
+	E  float64 `json:"e,string"`  // equity = trade balance + unrealized net profit/loss
 	Mf float64 `json:"mf,string"` // free margin = equity - initial margin (maximum margin available to open new positions)
 	Ml float64 `json:"ml,string"` // margin level = (equity / initial margin) * 100
 }
 
 type Order struct {
 	RefId      string     `json:"refid"`             // Referral order transaction id that created this order
-	Userref    string     `json:"userref"`           // user reference id
+	Userref    int64      `json:"userref"`           // user reference id
 	Status     string     `json:"status"`            // status of order: pending / open / closed / canceled / expired
 	Opentm     float64    `json:"opentm"`            // unix timestamp of when order was placed
 	Starttm    float64    `json:"starttm"`           // unix timestamp of order start time (or 0 if not set)
@@ -345,9 +345,6 @@ func (t *PublicOrder) UnmarshalJSON(b []byte) error {
 	}
 
 	t.Time = out[2].(float64)
-	if err != nil {
-		return err
-	}
 
 	return nil
 }

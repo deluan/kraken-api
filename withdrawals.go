@@ -29,12 +29,11 @@ func (api *KrakenApi) ApiWithdraw(asset string, key string, amount float64) (str
 		return "", err
 	}
 
-	content, err := parse(resp, nil)
+	refIds := make(map[string]string)
+	_, err = parse(resp, &refIds)
 	if err != nil {
 		return "", err
 	}
-
-	refIds, _ := content.(map[string]string)
 	return refIds["refid"], nil
 }
 
